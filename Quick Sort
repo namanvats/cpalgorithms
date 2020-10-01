@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+
+int partition(int arr[], int si, int ei)
+{
+  int count =0;
+  for(int i=0; i<=ei; i++)
+  {
+    if(arr[i]<arr[si])
+    {
+      count++;
+    }
+  }
+  int temp = arr[si];
+  arr[si]= arr[count];
+  arr[count]=temp;
+
+  while(si<ei)
+  {
+    if(arr[si]<arr[count])
+    {
+      si++;
+    }
+    else if(arr[ei]>=arr[count])
+    {
+      ei--;
+    }
+    else
+    {
+      int temp2= arr[si];
+      arr[si]=arr[ei];
+      arr[ei]=temp2;
+      si++;ei--;
+    }
+  }
+  return count;
+}
+
+void quicksort(int arr[], int si, int ei)
+{
+  if(si>=ei)
+  {
+    return;
+  }
+  int c = partition(arr, si, ei);
+  quicksort(arr, si, c-1);
+  quicksort(arr, c+1, ei);
+}
+int main()
+{
+  cout<<"Enter  Array size"<<endl;
+  int n;
+  cin>>n;
+  int arr[n];
+  for(int i=0; i<n; i++)
+  {
+    cin>>arr[i];
+  }
+  int si=0, ei=n-1;
+  quicksort(arr,si, ei);
+
+  for(int i=0; i<n; i++)
+  {
+    cout<<arr[i]<<" ";
+  }
+}
