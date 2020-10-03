@@ -1,8 +1,10 @@
 // Author: Kartikey Tewari
 // E-mail: kartikeya30@gmail.com
 
-// Time Complexity: 
-// Space Complexity: 
+// Time Complexity: O(pow(p,2) + log(n)(base=p))
+// Space Complexity: O(pow(p,2))
+// where p is the mod under consideration
+// viable method od calculating ncr_mod_p when p is small
 
 #include <bits/stdc++.h>
 #define ll long long
@@ -41,7 +43,7 @@ int ncr_lucas (int n, int r)
     {
         int a=n%mod;
         int b=r%mod;
-        
+
         return (ncr_lucas(n/mod,r/mod)*dp[a][b])%mod;
     }
 }
