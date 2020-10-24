@@ -5,12 +5,12 @@
 //Author: goyaldhara
 #include<bits/stdc++.h>
 using namespace std;
-int Binary_Search(int arr[],int start,int end,int key)
+int Binary_Search(int arr[],int first,int last,int key)
 {
     // This function will return 1 if the key is found in the array, else it will return 0;
     while(start<=end)
     {
-        int mid=(start)+(end-start)/2;
+        int mid=(first)+(last-first)/2;
         if(arr[mid] == key)
             return 1;
         if(arr[mid] < key)
